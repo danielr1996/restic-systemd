@@ -1,0 +1,9 @@
+[Unit]
+Description=Restic Backup
+
+[Service]
+EnvironmentFile=/%I
+Type=oneshot
+ExecStart=/usr/bin/restic backup ${RESTIC_BACKUP_SOURCE}
+ExecStartPost=/usr/bin/restic forget --keep-last 10 --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune
+ExecStartPost=/usr/bin/restic check --read-data-subset=10%
