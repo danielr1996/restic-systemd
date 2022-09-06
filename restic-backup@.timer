@@ -1,0 +1,10 @@
+[Unit]
+Description=Continues backup of restic target
+
+[Timer]
+OnCalendar=*-*-* 4:20:00
+AccuracySec=2h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
