@@ -5,5 +5,6 @@ systemd files to schedule a restic backup
 ```
 sudo ./copy.sh
 sudo systemctl daemon-reload
-sudo systemctl start restic-backup@$(systemd-escape --path /home/ubuntu/restic-systemd/env)
+cp backup.env.sample /etc/restic/backup.env
+sudo systemctl start restic-backup@backup
 ```
